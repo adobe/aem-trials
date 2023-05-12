@@ -15,6 +15,14 @@
   order: 0;
 }
 
+.top-hero-content {
+  max-width: 1480px;
+}
+
+.top-hero-content img {
+  max-width: 740px;
+}
+
 .columns > div > .columns-img-col img {
   display: block;
 }
