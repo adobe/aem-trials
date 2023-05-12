@@ -23,7 +23,7 @@ main .hero h1 {
   margin-left: auto;
   margin-right: auto;
   color: white;
-  font: normal normal bold 38px/43px "Adobe Clean", adobe-clean, sans-serif;
+  font: normal normal 600 38px/43px "Adobe Clean", adobe-clean, sans-serif;
 }
 
 main .hero > div > div > picture {
