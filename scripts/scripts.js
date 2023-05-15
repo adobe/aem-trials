@@ -32,7 +32,6 @@ function buildHeroBlock(main) {
     parentElement.remove();
 
     section.append(buildBlock('hero', { elems: [picture, heroContent] }));
-    
     main.prepend(section);
   }
 }
