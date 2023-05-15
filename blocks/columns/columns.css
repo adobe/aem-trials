@@ -15,15 +15,52 @@
   order: 0;
 }
 
-.top-hero-content {
+.columns.small {
+  max-width: 1000px;
+  margin: 75px auto 60px;
+}
+
+.columns.small p {
+  margin-bottom: 0;
+  font-size: var(--body-font-size-s);
+  line-height: var(--body-line-height-s);
+}
+
+.columns.small p:last-of-type {
+  margin-top: 0;
+}
+
+/* This is the flexbox div */
+.columns.small > div {
+  justify-content: space-between;
+}
+
+/* These are the columns */
+.columns.small > div > div {
+  max-width: 235px;
+}
+
+.columns.small > div > div img {
+  max-width: 180px;
+}
+
+.hero-content {
   max-width: 1480px;
 }
 
-.top-hero-content img {
+.hero-content img {
   max-width: 740px;
 }
 
-.columns > div > .columns-img-col img {
+.hero-content ul {
+  padding-left: 24px;
+}
+
+.hero-content ul > li {
+  list-style-type: '✓  ';
+}
+
+.hero-content > div > .columns-img-col img {
   display: block;
 }
 

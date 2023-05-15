@@ -20,13 +20,20 @@ const LCP_BLOCKS = []; // add your LCP blocks to the list
  * @param {Element} main The container element
  */
 function buildHeroBlock(main) {
-  const heroContent = main.querySelector('.columns');
+  const heroContent = main.querySelector('.hero-content');
   const picture = main.querySelector('picture');
 
   if (heroContent && picture // eslint-disable-next-line no-bitwise
       && (heroContent.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
     const section = document.createElement('div');
+
+    const { parentElement } = heroContent;
+    // Delete the parent element as it should now be empty
+    parentElement.remove();
+
     section.append(buildBlock('hero', { elems: [picture, heroContent] }));
+
+
     main.prepend(section);
   }
 }
