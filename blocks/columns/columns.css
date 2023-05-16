@@ -15,16 +15,53 @@
   order: 0;
 }
 
-.top-hero-content {
-  max-width: 1480px;
+.columns.small {
+  max-width: 1000px;
+  margin: 75px auto 60px;
 }
 
-.top-hero-content img {
+.columns.small p {
+  margin-bottom: 0;
+  font-size: var(--body-font-size-s);
+  line-height: var(--body-line-height-s);
+}
+
+.columns.small p:last-of-type {
+  margin-top: 0;
+}
+
+/* This is the flexbox div */
+.columns.small > div {
+  justify-content: space-between;
+}
+
+/* These are the columns */
+.columns.small > div > div {
+  max-width: 235px;
+}
+
+.hero-content img {
   max-width: 740px;
 }
 
-.columns > div > .columns-img-col img {
+.hero-content > div > .columns-img-col img {
   display: block;
+}
+
+.columns.small > div > div img {
+  max-width: 180px;
+}
+
+.hero-content {
+  max-width: 1480px;
+}
+
+.hero-content ul {
+  padding-left: 24px;
+}
+
+.hero-content ul > li {
+  list-style-type: '✓  ';
 }
 
 @media (min-width: 900px) {

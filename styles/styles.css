@@ -25,13 +25,16 @@
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
   /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 18px;
+  --body-font-size-m: 29px;
+  --body-line-height-m: 36px;
+  --body-font-size-s: 19px;
+  --body-line-height-s: 28px;
   --body-font-size-xs: 16px;
 
   /* heading sizes */
   --heading-font-size-xxl: 48px;
-  --heading-font-size-xl: 40px;
+  --heading-font-size-xl: 32px;
+  --heading-line-height-xl: 33px;
   --heading-font-size-l: 32px;
   --heading-font-size-m: 24px;
   --heading-font-size-s: 20px;
@@ -45,7 +48,8 @@
 @media (min-width: 900px) {
   :root {
     --heading-font-size-xxl: 60px;
-    --heading-font-size-xl: 48px;
+    --heading-font-size-xl: 32px;
+    --heading-line-height-xl: 33px;
     --heading-font-size-l: 36px;
     --heading-font-size-m: 30px;
     --heading-font-size-s: 24px;
@@ -57,10 +61,11 @@ body {
   font-size: var(--body-font-size-m);
   margin: 0;
   font-family: var(--body-font-family);
-  line-height: 1.6;
+  line-height: var(--body-line-height-m);
   color: var(--text-color);
   background-color: var(--background-color);
   display: none;
+  font-weight: normal;
 }
 
 body.appear {
@@ -82,7 +87,12 @@ h4, h5, h6 {
 }
 
 h1 { font-size: var(--heading-font-size-xxl) }
-h2 { font-size: var(--heading-font-size-xl) }
+
+h2 {
+  font-size: var(--heading-font-size-xl);
+  line-height: var(--heading-line-height-xl);
+}
+
 h3 { font-size: var(--heading-font-size-l) }
 h4 { font-size: var(--heading-font-size-m) }
 h5 { font-size: var(--heading-font-size-s) }
@@ -221,12 +231,18 @@ main img {
 }
 
 main .section {
-  padding: 64px 16px;
+  padding: 34px 16px;
+}
+
+main .section.full-width, main .section.full-width > div {
+  padding: 0;
+  margin: 0;
+  max-width: 100%;
 }
 
 @media (min-width: 600px) {
   main .section {
-    padding: 64px 32px;
+    padding: 34px 32px;
   }
 }
 
@@ -238,6 +254,11 @@ main .section {
 }
 
 /* section metadata */
-main .section.highlight {
-  background-color: var(--highlight-background-color);
+
+/* Centered section */
+main .section.centered {
+  text-align: center;
+  background-image: url('/img/background-gradient.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
