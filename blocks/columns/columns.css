@@ -40,6 +40,14 @@
   max-width: 235px;
 }
 
+.hero-content img {
+  max-width: 740px;
+}
+
+.hero-content > div > .columns-img-col img {
+  display: block;
+}
+
 .columns.small > div > div img {
   max-width: 180px;
 }
@@ -48,20 +56,12 @@
   max-width: 1480px;
 }
 
-.hero-content img {
-  max-width: 740px;
-}
-
 .hero-content ul {
   padding-left: 24px;
 }
 
 .hero-content ul > li {
   list-style-type: '✓  ';
-}
-
-.hero-content > div > .columns-img-col img {
-  display: block;
 }
 
 @media (min-width: 900px) {
