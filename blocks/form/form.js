@@ -60,7 +60,8 @@ function createSelect(fd) {
           button.setAttribute('disabled', '');
           await submitForm(form);
           const redirectTo = fd.Extra;
-          window.location.href = redirectTo;
+          console.log('successfully submitted form');
+        //   window.location.href = redirectTo;
         }
       });
     }
