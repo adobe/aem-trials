@@ -68,6 +68,8 @@ function prepareRequest(form, token) {
 }
 
 async function submitForm(form, token) {
+    console.log('inside submit form');
+    console.log('form.dataset = ' + form.dataset);
   try {
     const url = `${FORM_SUBMIT_ENDPOINT}${form.dataset.action}`;
     const response = await fetch(url, {
