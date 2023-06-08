@@ -34,7 +34,7 @@ function createSelect(fd) {
   
   async function submitForm(form) {
     const payload = constructPayload(form);
-    console.log('payload =' + payload);
+    console.log('payload =' + JSON.stringify(payload));
     const resp = await fetch(form.dataset.action, {
       method: 'POST',
       cache: 'no-cache',
