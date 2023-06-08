@@ -51,8 +51,7 @@ function prepareRequest(form, token) {
   let headers = {
     'Content-Type': 'application/json',
   };
-  let body = JSON.stringify({ data: payload, token });
-  console.log('payload = ' + JSON.stringify(payload));
+  let body = JSON.stringify({ data: payload });
   if (attachments && Object.keys(attachments).length > 0) {
     headers = {};
     body = new FormData();
@@ -65,6 +64,7 @@ function prepareRequest(form, token) {
     // body.append('fileFields', JSON.stringify(fileNames));
     body.append('data', JSON.stringify(payload));
   }
+  console.log('body = ' + JSON.stringify(body));
   return { headers, body };
 }
 
