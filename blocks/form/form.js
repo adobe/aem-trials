@@ -80,7 +80,7 @@ async function submitForm(form, token) {
     if (response.ok) {
       sampleRUM('form:submit');
       console.log('submitted form successfully');
-    //   window.location.href = form.dataset?.redirect || 'thankyou';
+      window.location.href = form.dataset?.redirect || 'thankyou';
     } else {
       const error = await response.text();
       throw new Error(error);
