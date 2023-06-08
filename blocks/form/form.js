@@ -61,8 +61,8 @@ function prepareRequest(form, token) {
       fileNames.push(dataRef);
       [...files].forEach((file) => body.append(dataRef, file));
     });
-    body.append('token', token);
-    body.append('fileFields', JSON.stringify(fileNames));
+    // body.append('token', token);
+    // body.append('fileFields', JSON.stringify(fileNames));
     body.append('data', JSON.stringify(payload));
   }
   return { headers, body };
