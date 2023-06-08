@@ -1,7 +1,7 @@
 main .form {
     background-color: white;
     padding: var(--spacing-m);
-    box-shadow: 0 1px 6px rgb(34 34 34 / 10%);
+    /* box-shadow: 0 1px 6px rgb(34 34 34 / 10%); */
   }
   
   main .form h2 {
@@ -22,11 +22,15 @@ main .form {
   main .form select {
     border: 1px solid rgb(193 193 195);
     padding: 11px;
-    border-radius: 0;
-    width: 100%;
+    border-radius: 10px;
+    width: 50%;
     max-width: 50rem;
     box-sizing: border-box;
     margin-top: 4px;
+  }
+
+  .form-container .default-content-wrapper p {
+    font-size: 18px;
   }
   
   main .form textarea {
@@ -108,18 +112,10 @@ main .form {
   }
   
   main .form .button {
-    cursor: pointer;
-    background: rgb(20 115 230);
-    color: white;
-    border-radius: 16px;
-    font-size: var(--type-body-s-size);
-    font-weight: 300;
-    padding: 6px 16px;
-    border: none;
-    font-family: adobe-clean, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
   }
   
-  main .form .form-submit-wrapper {
+  /* main .form .form-submit-wrapper {
     display: flex;
     justify-content: flex-end;
-  }
+  } */

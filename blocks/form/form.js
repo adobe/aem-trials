@@ -53,6 +53,7 @@ function createSelect(fd) {
     const button = document.createElement('button');
     button.textContent = fd.Label;
     button.classList.add('button');
+    button.classList.add('primary');
     if (fd.Type === 'submit') {
       button.addEventListener('click', async (event) => {
         const form = button.closest('form');
@@ -62,8 +63,8 @@ function createSelect(fd) {
           button.setAttribute('disabled', '');
           await submitForm(form);
           const redirectTo = fd.Extra;
-          console.log('successfully submitted form');
-        //   window.location.href = redirectTo;
+          console.log('successfully submitted form, redirectTo = ' + redirectTo);
+          window.location.href = redirectTo;
         }
       });
     }
@@ -168,7 +169,8 @@ function createSelect(fd) {
           fieldWrapper.append(createButton(fd));
           break;
         default:
-          fieldWrapper.append(createLabel(fd));
+            // For now, we are not creating any label for the email field
+        //   fieldWrapper.append(createLabel(fd));
           fieldWrapper.append(createInput(fd));
       }
   
