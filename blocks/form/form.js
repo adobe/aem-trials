@@ -43,7 +43,7 @@ function createSelect(fd) {
       },
       body: JSON.stringify({ data: payload }),
     });
-    console.log('body =' + body);
+    console.log('body =' + JSON.stringify({ data: payload }));
     await resp.text();
     return payload;
   }
