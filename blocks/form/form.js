@@ -64,8 +64,8 @@ function prepareRequest(form, token) {
     // body.append('fileFields', JSON.stringify(fileNames));
     body.append('data', JSON.stringify(payload));
   }
-  console.log('body = ' + JSON.stringify(body));
-  return { headers, body };
+  console.log('body = ' + body);
+  return { headers, body};
 }
 
 async function submitForm(form, token) {
