@@ -147,6 +147,7 @@ function createSelect(fd) {
       const fieldId = `form-${fd.Type}-wrapper${style}`;
       fieldWrapper.className = fieldId;
       fieldWrapper.classList.add('field-wrapper');
+      console.log('fd.Type = ' + fd.Type);
       switch (fd.Type) {
         case 'select':
           fieldWrapper.append(createLabel(fd));
