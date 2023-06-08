@@ -52,6 +52,7 @@ function prepareRequest(form, token) {
     'Content-Type': 'application/json',
   };
   let body = JSON.stringify({ data: payload, token });
+  console.log('payload = ' + JSON.stringify(payload));
   if (attachments && Object.keys(attachments).length > 0) {
     headers = {};
     body = new FormData();
@@ -78,7 +79,8 @@ async function submitForm(form, token) {
     });
     if (response.ok) {
       sampleRUM('form:submit');
-      window.location.href = form.dataset?.redirect || 'thankyou';
+      console.log('submitted form successfully');
+    //   window.location.href = form.dataset?.redirect || 'thankyou';
     } else {
       const error = await response.text();
       throw new Error(error);
