@@ -1,7 +1,7 @@
 import { sampleRUM } from '../../scripts/lib-franklin.js';
 
 const SITE_KEY = '6LcB318mAAAAAO6smzDd-TtD1-AWlidsHsCXcJHy';
-const FORM_SUBMIT_ENDPOINT = 'https://franklin-submit-wrapper.adobeaem.workers.dev';
+const FORM_SUBMIT_ENDPOINT = 'https://sites-13927-franklin-forms-trial--aem-trials--adobe.hlx.page/email-form';
 
 function loadScript(url) {
   const head = document.querySelector('head');
@@ -71,7 +71,7 @@ async function submitForm(form, token) {
     console.log('inside submit form');
     console.log('form.dataset = ' , JSON.stringify(form.dataset));
   try {
-    const url = `${FORM_SUBMIT_ENDPOINT}${form.dataset.action}`;
+    const url = `${FORM_SUBMIT_ENDPOINT}`;
     const response = await fetch(url, {
       method: 'POST',
       ...prepareRequest(form, token),
