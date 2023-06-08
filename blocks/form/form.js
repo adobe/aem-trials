@@ -5,6 +5,7 @@ const FORM_SUBMIT_ENDPOINT = 'https://franklin-submit-wrapper.adobeaem.workers.d
 
 function loadScript(url) {
   const head = document.querySelector('head');
+  console.log('entered loadScript');
   let script = head.querySelector(`script[src="${url}"]`);
   if (!script) {
     script = document.createElement('script');
