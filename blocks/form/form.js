@@ -35,7 +35,6 @@ function createSelect(fd) {
   async function submitForm(form) {
     const payload = constructPayload(form);
     console.log('payload =' + JSON.stringify(payload));
-    const url = `https://sites-13927-franklin-forms-trial--aem-trials--adobe.hlx.page/email-form`;
     const resp = await fetch(form.dataset.action, {
       method: 'POST',
       cache: 'no-cache',
@@ -169,7 +168,7 @@ function createSelect(fd) {
           fieldWrapper.append(createButton(fd));
           break;
         default:
-            // For now, we are not creating any label for the email field
+        // For now, we are not creating any label for the email field
         //   fieldWrapper.append(createLabel(fd));
           fieldWrapper.append(createInput(fd));
       }
