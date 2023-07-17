@@ -34,7 +34,7 @@ function createSelect(fd) {
   
   async function submitForm(form) {
     const payload = constructPayload(form);
-    console.log('payload =' + JSON.stringify(payload));
+
     const resp = await fetch(form.dataset.action, {
       method: 'POST',
       cache: 'no-cache',
@@ -43,7 +43,6 @@ function createSelect(fd) {
       },
       body: JSON.stringify({ data: payload }),
     });
-    console.log('body =' + JSON.stringify({ data: payload }));
     await resp.text();
     return payload;
   }
@@ -57,17 +56,33 @@ function createSelect(fd) {
       button.addEventListener('click', async (event) => {
         const form = button.closest('form');
         if (fd.Placeholder) form.dataset.action = fd.Placeholder;
-        if (form.checkValidity()) {
+        if (form.checkValidity() && checkValidity(form) !== null) {
           event.preventDefault();
           button.setAttribute('disabled', '');
           await submitForm(form);
           const redirectTo = fd.Extra;
-          console.log('successfully submitted form, redirectTo = ' + redirectTo);
           window.location.href = redirectTo;
+        } else {
+          event.preventDefault();
+          const emailElement = document.getElementById("email");
+          if (emailElement.closest('div').childNodes.length < 2) {
+          const paragraph = document.createElement('p');
+          var text = document.createTextNode("Please enter a valid company email address.");
+          paragraph.appendChild(text);
+          emailElement.classList.add('highlight');
+          emailElement.closest('div').appendChild(paragraph);
+          }
         }
       });
     }
     return button;
+  }
+
+  function checkValidity(form) {
+    const payload = constructPayload(form);
+    const email = payload['email'];
+    const regex = /^[^@]+@(?!(yahoo|hotmail|gmail|icloud|outlook))[^@]+\.[a-z]{2,}$/;
+    return String(email).match(regex);
   }
   
   function createHeading(fd) {
@@ -147,7 +162,6 @@ function createSelect(fd) {
       const fieldId = `form-${fd.Type}-wrapper${style}`;
       fieldWrapper.className = fieldId;
       fieldWrapper.classList.add('field-wrapper');
-      console.log('fd.Type = ' + fd.Type);
       switch (fd.Type) {
         case 'select':
           fieldWrapper.append(createLabel(fd));

@@ -114,8 +114,13 @@ main .form {
   main .form .button {
     font-size: 24px;
   }
-  
-  /* main .form .form-submit-wrapper {
-    display: flex;
-    justify-content: flex-end;
-  } */
+
+  main form p {
+    font-size: 18px;
+    color: red;
+    margin: 0px;
+  }
+
+  main .form .highlight {
+    border-color: red;
+  }
