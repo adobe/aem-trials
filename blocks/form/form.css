@@ -1,7 +1,6 @@
 main .form {
     background-color: white;
     padding: var(--spacing-m);
-    /* box-shadow: 0 1px 6px rgb(34 34 34 / 10%); */
   }
   
   main .form h2 {
@@ -27,6 +26,12 @@ main .form {
     max-width: 50rem;
     box-sizing: border-box;
     margin-top: 4px;
+  }
+
+  main form p {
+    font-size: 18px;
+    color: red;
+    margin: 0;
   }
 
   .form-container .default-content-wrapper p {
@@ -113,12 +118,6 @@ main .form {
   
   main .form .button {
     font-size: 24px;
-  }
-
-  main form p {
-    font-size: 18px;
-    color: red;
-    margin: 0px;
   }
 
   main .form .highlight {
