@@ -49,7 +49,7 @@ async function submitForm(form) {
 
 function checkValidity(form) {
   const payload = constructPayload(form);
-  const { email } = payload.email;
+  const { email } = payload;
   const regex = /^[^@]+@(?!(yahoo|hotmail|gmail|icloud|outlook))[^@]+\.[a-z]{2,}$/;
   return String(email).match(regex);
 }
