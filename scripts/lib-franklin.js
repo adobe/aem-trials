@@ -588,18 +588,6 @@ export function loadHeader(header) {
 }
 
 /**
- * Loads a block named 'footer' into footer
- * @param footer footer element
- * @returns {Promise}
- */
-export function loadFooter(footer) {
-  const footerBlock = buildBlock('footer', '');
-  footer.append(footerBlock);
-  decorateBlock(footerBlock);
-  return loadBlock(footerBlock);
-}
-
-/**
  * Setup block utils.
  */
 export function setup() {
