@@ -52,14 +52,13 @@ function createButton(field) {
   if (field.Type === 'submit') {
     button.addEventListener('click', async (event) => {
       const form = button.closest('form');
+      event.preventDefault();
       if (checkValidity(form) !== null) {
-        event.preventDefault();
         button.setAttribute('disabled', '');
         await submitForm(form);
         const redirectTo = field.Extra;
         window.location.href = redirectTo;
       } else {
-        event.preventDefault();
         const emailElement = document.getElementById('email');
         if (emailElement.closest('div').childNodes.length < 2) {
           const paragraph = document.createElement('p');
