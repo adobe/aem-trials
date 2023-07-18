@@ -1,0 +1,46 @@
+main .form {
+  background-color: white;
+  padding: var(--spacing-m);
+}
+
+main .form input {
+  border: 1px solid rgb(193 193 195);
+  padding: 11px;
+  border-radius: 10px;
+  width: 50%;
+  max-width: 50rem;
+  box-sizing: border-box;
+  margin-top: 4px;
+}
+
+main form p {
+  font-size: 18px;
+  color: red;
+  margin: 0;
+}
+
+.form-container .default-content-wrapper p {
+  font-size: 18px;
+}
+
+main .form input:hover {
+  border-color: rgb(90 92 96);
+}
+
+main .form label.required::after {
+  content: '*';
+  color: red;
+  padding-left: 5px;
+}
+
+main .form .field-wrapper {
+  margin-bottom: 20px;
+}
+
+main .form .button {
+  font-size: 24px;
+}
+
+main .form .highlight {
+  border-color: red;
+}
