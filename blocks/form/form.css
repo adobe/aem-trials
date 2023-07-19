@@ -19,6 +19,14 @@ main form p {
   margin: 0;
 }
 
+.form-container .default-content-wrapper.hide, main form.hide {
+  display: none;
+}
+
+main .form-container .contact-us {
+  margin-left: 10%;
+}
+
 .form-container .default-content-wrapper p {
   font-size: 18px;
 }

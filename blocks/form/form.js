@@ -56,8 +56,16 @@ function createButton(field) {
       if (checkValidity(form) !== null) {
         button.setAttribute('disabled', '');
         await submitForm(form);
-        const redirectTo = field.Extra;
-        window.location.href = redirectTo;
+        const formContainer = form.closest('.form-container');
+        formContainer.firstElementChild.classList.add('hide');
+        form.classList.add('hide');
+        const paragraph = document.createElement('p');
+        paragraph.classList.add('contact-us');
+        const text = document.createTextNode(
+          "Thank you for your interest in trials! We'll contact you soon!",
+        );
+        paragraph.appendChild(text);
+        formContainer.appendChild(paragraph);
       } else {
         const emailElement = document.getElementById('email');
         if (emailElement.closest('div').childNodes.length < 2) {
