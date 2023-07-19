@@ -56,15 +56,19 @@ function createButton(field) {
       if (checkValidity(form) !== null) {
         button.setAttribute('disabled', '');
         await submitForm(form);
-        const redirectTo = field.Extra;
-        window.location.href = redirectTo;
+        const formContainer = form.closest('.form-container');
+        formContainer.firstElementChild.classList.add('hide');
+        form.classList.add('hide');
+        const paragraph = document.createElement('p');
+        paragraph.classList.add('trial-sign-up-message');
+        const text = document.createTextNode(field.Extra);
+        paragraph.appendChild(text);
+        formContainer.appendChild(paragraph);
       } else {
         const emailElement = document.getElementById('email');
         if (emailElement.closest('div').childNodes.length < 2) {
           const paragraph = document.createElement('p');
-          const text = document.createTextNode(
-            'Please enter a valid company email address.',
-          );
+          const text = document.createTextNode(field.Extra);
           paragraph.appendChild(text);
           emailElement.classList.add('highlight');
           emailElement.closest('div').appendChild(paragraph);
