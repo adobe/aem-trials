@@ -60,19 +60,15 @@ function createButton(field) {
         formContainer.firstElementChild.classList.add('hide');
         form.classList.add('hide');
         const paragraph = document.createElement('p');
-        paragraph.classList.add('contact-us');
-        const text = document.createTextNode(
-          "Thank you for your interest in trials! We'll contact you soon!",
-        );
+        paragraph.classList.add('trial-sign-up-message');
+        const text = document.createTextNode(field.Extra);
         paragraph.appendChild(text);
         formContainer.appendChild(paragraph);
       } else {
         const emailElement = document.getElementById('email');
         if (emailElement.closest('div').childNodes.length < 2) {
           const paragraph = document.createElement('p');
-          const text = document.createTextNode(
-            'Please enter a valid company email address.',
-          );
+          const text = document.createTextNode(field.Extra);
           paragraph.appendChild(text);
           emailElement.classList.add('highlight');
           emailElement.closest('div').appendChild(paragraph);
