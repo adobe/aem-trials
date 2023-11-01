@@ -12,12 +12,28 @@
 
  :root {
   /* colors */
-  --link-color: #035fe6;
-  --link-hover-color: #136ff6;
-  --background-color: #fff;
-  --overlay-background-color: #eee;
-  --highlight-background-color: #ccc;
-  --text-color: #000;
+   --color-white: #FFF;
+   --color-gray-100: #F8F8F8;
+   --color-gray-200: #E8E8E8;
+   --color-gray-300: #D4D4D4;
+   --color-gray-400: #B6B6B6;
+   --color-gray-500: #909090;
+   --color-gray-600: #686868;
+   --color-gray-700: #444;
+   --color-gray-800: #242424;
+   --color-black: #000;
+
+   --link-color: #035fe6;
+   --link-hover-color: #136ff6;
+   --link-color-dark: #1473E6;
+   --link-hover-color-dark: #0d66d0;
+    --background-color: var(--color-white);
+    --overlay-background-color: #ffffff20;
+    --highlight-background-color: #ffffff40;
+    --text-color: var(--color-black);
+
+   --color-accent: var(--link-color-dark);
+   --color-accent-hover: var(--link-hover-color-dark);
 
   /* fonts */
   --body-font-family: 'Adobe Clean', adobe-clean, 'Trebuchet MS', sans-serif;
@@ -40,26 +56,11 @@
   --heading-font-size-s: 20px;
   --heading-font-size-xs: 18px;
 
-  /* nav height */
-  --nav-height: 64px;
-
-}
-
-@media (min-width: 900px) {
-  :root {
-    --heading-font-size-xxl: 60px;
-    --heading-font-size-xl: 32px;
-    --heading-line-height-xl: 33px;
-    --heading-font-size-l: 36px;
-    --heading-font-size-m: 30px;
-    --heading-font-size-s: 24px;
-    --heading-font-size-xs: 22px;
-  }
 }
 
 body {
-  font-size: var(--body-font-size-m);
   margin: 0;
+  font-size: var(--body-font-size-m);
   font-family: var(--body-font-family);
   line-height: var(--body-line-height-m);
   color: var(--text-color);
@@ -72,10 +73,6 @@ body.appear {
   display: unset;
 }
 
-header {
-  height: var(--nav-height);
-}
-
 h1, h2, h3,
 h4, h5, h6 {
   font-family: var(--heading-font-family);
@@ -83,7 +80,7 @@ h4, h5, h6 {
   line-height: 1.25;
   margin-top: 1em;
   margin-bottom: .5em;
-  scroll-margin: calc(var(--nav-height) + 1em);
+  scroll-margin: 1em;
 }
 
 h1 { font-size: var(--heading-font-size-xxl) }
@@ -148,31 +145,50 @@ a.button:any-link, button {
   box-sizing: border-box;
   text-decoration: none;
   border: 2px solid transparent;
-  padding: 5px 30px;
+  border-radius: 16px;
+  padding: 5px 14px;
   text-align: center;
+  font-size: 15px;
+  line-height: 16px;
   font-style: normal;
-  font-weight: 600;
-  cursor: pointer;
-  color: var(--background-color);
-  background-color: var(--link-color);
-  margin: 16px 0;
+  font-weight: 700;
+  color: var(--text-color);
+  background-color: transparent;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-radius: 30px;
 }
 
-a.button:hover, a.button:focus, button:hover, button:focus  {
+a.button:hover,
+a.button:focus,
+button:hover,
+button:focus  {
   background-color: var(--link-hover-color);
-  cursor: pointer;
 }
 
-button:disabled, button:disabled:hover {
+button:disabled,
+button:disabled:hover {
   background-color: var(--overlay-background-color);
-  cursor: unset;
 }
 
-a.button.secondary, button.secondary {
+a.button.primary,
+button.primary {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.hero a.button.primary,
+.hero button.primary {
+  border-radius: 25px;
+  font-size: 19px;
+  line-height: 24px;
+  min-height: 28px;
+  padding: 10px 24px 8px;
+}
+
+a.button.secondary,
+button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color)
@@ -230,15 +246,26 @@ main img {
   width: 100%;
 }
 
+/* section styles */
 main .section {
   padding: 34px 16px;
 }
 
-main .section.full-width, main .section.full-width > div {
-  padding: 0;
-  margin: 0;
-  max-width: 100%;
+/*  sections */
+main .section.aside.neutral {
+  text-align: center;
 }
+
+main .section.aside.neutral {
+  background-color: var(--color-gray-200);
+}
+
+main .section.aside.subtle {
+  background-image: url('/img/background-gradient.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;}
+
+/* breakpoints */
 
 @media (min-width: 600px) {
   main .section {
@@ -247,18 +274,18 @@ main .section.full-width, main .section.full-width > div {
 }
 
 @media (min-width: 900px) {
+  :root {
+    --heading-font-size-xxl: 60px;
+    --heading-font-size-xl: 32px;
+    --heading-line-height-xl: 33px;
+    --heading-font-size-l: 36px;
+    --heading-font-size-m: 30px;
+    --heading-font-size-s: 24px;
+    --heading-font-size-xs: 22px;
+  }
+
   .section > div {
     max-width: 1200px;
     margin: auto;
   }
-}
-
-/* section metadata */
-
-/* Centered section */
-main .section.centered {
-  text-align: center;
-  background-image: url('/img/background-gradient.png');
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
 }
