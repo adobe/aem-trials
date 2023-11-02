@@ -24,7 +24,6 @@
   --color-black: #000;
   --dark-spectrum-blue: #0463d6;
   --spectrum-blue: #1473e6;
-
   --link-color: #035fe6;
   --link-hover-color: #136ff6;
   --link-color-dark: #1473E6;
@@ -34,7 +33,6 @@
   --background-color-grey: var(--color-grey-200);
   --text-color: #2c2c2c;
   --border-color: var(--color-grey-200);
-
   --color-accent: var(--link-color-dark);
   --color-accent-hover: var(--link-hover-color-dark);
 
@@ -303,7 +301,7 @@ main .section {
 }
 
 /*  sections */
-main .section.aside.neutral {
+main .section.aside {
   text-align: center;
 }
 
