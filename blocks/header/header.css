@@ -22,7 +22,6 @@ header nav {
   grid-template: 'brand tools' var(--nav-height);
   align-items: center;
   gap: 0 2em;
-  max-width: 1264px;
   height: var(--nav-height);
   padding: 0 1rem;
   font-family: var(--body-font-family);
