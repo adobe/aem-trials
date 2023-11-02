@@ -211,6 +211,26 @@ button:disabled:hover {
   background-color: var(--background-color-lightgrey);
 }
 
+button.fill {
+  background: var(--text-color);
+  border-color: var(--text-color);
+  color: var(--color-white);
+}
+
+.dark button.fill {
+  background: var(--color-white);
+  border-color: var(--color-white);
+  color: var(--text-color);
+}
+
+button.button-l {
+  border-radius: 20px;
+  font-size: 17px;
+  line-height: 20px;
+  min-height: 21px;
+  padding: 7px 18px 8px;
+}
+
 a.button.primary,
 button.primary {
   background: var(--color-accent);
@@ -241,24 +261,6 @@ button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color)
-}
-
-main input {
-  font-size: 1.25rem;
-  width: 100%;
-  max-width: 50rem;
-  display: block;
-  margin-bottom: 1rem;
-  padding: 0.75rem 0.6rem;
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  border: 1px solid var(--text-color);
-  color: var(--text-color);
-  background-color: var(--background-color);
-}
-
-main input:hover {
-  border: 1px solid var(--text-color);
 }
 
 main blockquote {
@@ -305,14 +307,19 @@ main .section.aside {
   text-align: center;
 }
 
-main .section.aside.neutral {
+main .section.neutral {
   background-color: var(--color-grey-200);
 }
 
-main .section.aside.subtle {
+main .section.subtle {
   background-image: url('/img/background-gradient.png');
   background-size: 100% 100%;
   background-repeat: no-repeat;
+}
+
+main .section.dark {
+  background-color: rgb(29 29 29);
+  color: var(--color-white);
 }
 
 /* breakpoints */
@@ -325,13 +332,18 @@ main .section.aside.subtle {
 
 @media (min-width: 900px) {
   :root {
-    --heading-font-size-xxl: 60px;
-    --heading-font-size-xl: 32px;
-    --heading-line-height-xl: 33px;
-    --heading-font-size-l: 36px;
-    --heading-font-size-m: 30px;
-    --heading-font-size-s: 24px;
-    --heading-font-size-xs: 22px;
+    --heading-font-size-xxl: 44px;
+    --heading-line-height-xxl: 1;
+    --heading-font-size-xl: 36px;
+    --heading-line-height-xl: 45px;
+    --heading-font-size-l: 28px;
+    --heading-line-height-l: 35px;
+    --heading-font-size-m: 24px;
+    --heading-line-height-m: 30px;
+    --heading-font-size-s: 20px;
+    --heading-line-height-s: 25px;
+    --heading-font-size-xs: 18px;
+    --heading-line-height-xs: 22px;
   }
 
   .section > div {

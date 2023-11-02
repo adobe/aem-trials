@@ -30,7 +30,7 @@ function checkValidity(form) {
 function createButton(field) {
   const button = document.createElement('button');
   button.textContent = field.Label;
-  button.classList.add('con-button', 'button-l', 'fill');
+  button.classList.add('button', 'button-l', 'fill');
   if (field.Type === 'submit') {
     button.addEventListener('click', async (event) => {
       const form = button.closest('form');
