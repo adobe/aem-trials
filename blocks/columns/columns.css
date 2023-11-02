@@ -22,8 +22,8 @@
 
 .columns.small p {
   margin-bottom: 0;
-  font-size: var(--body-font-size-s);
-  line-height: var(--body-line-height-s);
+  font-size: var(--text-font-size-s);
+  line-height: var(--text-line-height-s);
 }
 
 .columns.small p:last-of-type {

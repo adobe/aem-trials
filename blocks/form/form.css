@@ -18,8 +18,8 @@ main .form h3 {
 
 main .form p,
 main .form form {
-  font-size: var(--type-heading-l-size);
-  line-height: var(--type-heading-l-lh);
+  font-size: var(--heading-font-size-l);
+  line-height: var(--heading-line-height-l);
   margin-top: unset;
 }
 
@@ -33,7 +33,7 @@ main .form input {
 }
 
 main .form .field-wrapper p {
-  font-size: var(--type-body-xs-size);
+  font-size: var(--text-font-size-xs);
   margin: 0;
 }
 
