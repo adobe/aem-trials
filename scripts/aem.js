@@ -470,6 +470,39 @@ async function decorateIcons(element) {
   });
 }
 
+function getButtonLabel(button) {
+  // try sibling text
+  const sibling = button.parentElement?.previousElementSibling;
+  if (sibling && sibling.textContent) {
+    return sibling.textContent;
+  }
+  // try href
+  if (button.href) {
+    return button.href.replace(/[^\w]/gi, '-');
+  }
+  return undefined;
+}
+
+/**
+ * Include additional attributes on all links.
+ * @param element
+ * @param options
+ */
+function decorateLinks(element, options = {}) {
+  element.querySelectorAll('a').forEach((a) => {
+    // add aria-label when included in options or when no text content
+    const hasAriaLabel = !!a.getAttribute('aria-label');
+    if (!hasAriaLabel && (options.ariaLabel || !a.textContent)) {
+      const label = options.ariaLabel || getButtonLabel(a);
+      if (label) {
+        a.setAttribute('aria-label', label);
+      } else {
+        a.setAttribute('aria-hidden', 'true');
+      }
+    }
+  });
+}
+
 /**
  * Decorates all sections in a container element.
  * @param {Element} main The container element
@@ -732,6 +765,7 @@ export {
   decorateBlock,
   decorateBlocks,
   decorateButtons,
+  decorateLinks,
   decorateIcons,
   decorateSections,
   decorateTemplateAndTheme,

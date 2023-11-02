@@ -35,6 +35,7 @@
   --border-color: var(--color-grey-200);
   --color-accent: var(--link-color-dark);
   --color-accent-hover: var(--link-hover-color-dark);
+  --color-adobe-brand: #fa0f00;
 
   /* fonts */
   --body-font-family: 'Adobe Clean', adobe-clean, 'Trebuchet MS', sans-serif;
@@ -76,6 +77,9 @@
   --spacing-xl: 56px;
   --spacing-xxl: 80px;
   --spacing-xxxl: 104px;
+
+  /* nav height */
+  --nav-height: 63px;
 }
 
 body {
@@ -100,7 +104,7 @@ h4, h5, h6 {
   line-height: 1;
   margin-top: 1em;
   margin-bottom: .5em;
-  scroll-margin: 1em;
+  scroll-margin: calc(var(--nav-height) + 1em);
 }
 
 h1 {
