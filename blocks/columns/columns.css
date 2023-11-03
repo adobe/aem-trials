@@ -3,6 +3,10 @@
   flex-direction: column;
 }
 
+.columns > div > div > *:first-child {
+  margin-top: 0;
+}
+
 .columns img {
   width: 100%;
 }

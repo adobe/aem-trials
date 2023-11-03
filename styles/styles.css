@@ -181,12 +181,16 @@ a:hover {
 }
 
 /* buttons */
-a.button:any-link, button {
+a.button:any-link {
   font-family: var(--body-font-family);
   display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
   color: var(--text-color);
+}
+
+main a.button:any-link,
+main button {
   border: 2px solid var(--text-color);
   border-radius: 16px;
   padding: 5px 14px;
@@ -201,33 +205,33 @@ a.button:any-link, button {
   text-overflow: ellipsis;
 }
 
-a.button:hover,
-a.button:focus,
-button:hover,
-button:focus {
+main a.button:hover,
+main a.button:focus,
+main button:hover,
+main button:focus {
   background-color: var(--color-black);
   border-color: var(--color-black);
   color: var(--color-white);
 }
 
-button:disabled,
-button:disabled:hover {
+main button:disabled,
+main button:disabled:hover {
   background-color: var(--background-color-lightgrey);
 }
 
-button.fill {
+main button.fill {
   background: var(--text-color);
   border-color: var(--text-color);
   color: var(--color-white);
 }
 
-.dark button.fill {
+main .dark button.fill {
   background: var(--color-white);
   border-color: var(--color-white);
   color: var(--text-color);
 }
 
-button.button-l {
+main button.button-l {
   border-radius: 20px;
   font-size: 17px;
   line-height: 20px;
@@ -235,15 +239,15 @@ button.button-l {
   padding: 7px 18px 8px;
 }
 
-a.button.primary,
-button.primary {
+main a.button.primary,
+main button.primary {
   background: var(--color-accent);
   border-color: var(--color-accent);
   color: var(--color-white);
 }
 
-.hero a.button.primary,
-.hero button.primary {
+main .hero a.button.primary,
+main .hero button.primary {
   border-radius: 25px;
   font-size: 19px;
   line-height: 24px;
@@ -251,17 +255,17 @@ button.primary {
   padding: 10px 24px 8px;
 }
 
-.hero a.button.primary:hover,
-.hero button.primary:hover,
-.hero a.button.primary:active,
-.hero button.primary:active {
+main .hero a.button.primary:hover,
+main .hero button.primary:hover,
+main .hero a.button.primary:active,
+main .hero button.primary:active {
   background: var(--color-accent-hover);
   border-color: var(--color-accent-hover);
   color: var(--color-white);
 }
 
-a.button.secondary,
-button.secondary {
+main a.button.secondary,
+main button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color)
