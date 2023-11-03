@@ -1,4 +1,6 @@
-import { getMetadata, decorateIcons, decorateLinks, decorateButtons } from '../../scripts/aem.js';
+import {
+  getMetadata, decorateIcons, decorateLinks, decorateButtons,
+} from '../../scripts/aem.js';
 
 /**
  * decorates the header, mainly the nav
