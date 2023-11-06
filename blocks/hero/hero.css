@@ -26,6 +26,10 @@ main .hero h1 {
   font: normal normal 600 38px/43px "Adobe Clean", adobe-clean, sans-serif;
 }
 
+main .hero .button-container {
+  margin-top: var(--spacing-xl);
+}
+
 main .hero > div > div > picture {
   position: absolute;
   z-index: -1;

@@ -1,54 +1,92 @@
 main .form {
-  background-color: white;
-  padding: var(--spacing-m);
+  /* Scope variables to form */
+  --form-input-border-color: #C1C1C3;
+  --form-input-border-highlight-color: #E34850;
+
+  padding-top: 34px;
+  min-height: 218px;
+}
+
+main .form > div {
+  margin-left: 35%;
+}
+
+main .form h3 {
+  margin-bottom: var(--spacing-xs);
+  margin-top: unset;
+}
+
+main .form p,
+main .form form {
+  font-size: var(--heading-font-size-l);
+  line-height: var(--heading-line-height-l);
+  margin-top: unset;
 }
 
 main .form input {
-  border: 1px solid rgb(193 193 195);
+  border: 1px solid var(--form-input-border-color);
   padding: 11px;
   border-radius: 10px;
   width: 50%;
   max-width: 50rem;
   box-sizing: border-box;
-  margin-top: 4px;
 }
 
-main form p {
-  font-size: 18px;
-  color: red;
+main .form .field-wrapper p {
+  font-size: var(--text-font-size-xs);
   margin: 0;
 }
 
-.form-container .default-content-wrapper.hide, main form.hide {
-  display: none;
+main .form .form-submit-wrapper  {
+  width: 50%;
+  text-align: end;
+  margin-top: var(--spacing-m);
 }
 
-main .form-container .trial-sign-up-message {
-  margin-left: 10%;
+main .form .form-submit-message {
+  max-width: 55%;
 }
 
-.form-container .default-content-wrapper p {
-  font-size: 18px;
+main .form label.form-label {
+  position: relative;
 }
 
-main .form input:hover {
-  border-color: rgb(90 92 96);
-}
-
-main .form label.required::after {
-  content: '*';
-  color: red;
-  padding-left: 5px;
-}
-
-main .form .field-wrapper {
-  margin-bottom: 20px;
-}
-
-main .form .button {
-  font-size: 24px;
+main .form label.form-label.alert::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  transform: translateY(-25%);
+  background: url("/img/ui/Alert.svg") no-repeat;
 }
 
 main .form .highlight {
-  border-color: red;
+  border-color: var(--form-input-border-highlight-color);
+}
+
+main .dark .form h3,
+main .dark .form-text-field-wrapper p,
+main .dark .form-submit-message {
+  color: var(--color-white);
+}
+
+main .form.submitted h3,
+main .form.submitted form {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  main .form > div {
+    margin-left: 15%;
+  }
+
+  main .form input {
+    width: 85%;
+  }
+
+  main .form .form-submit-wrapper  {
+    width: 85%;
+  }
 }
