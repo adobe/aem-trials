@@ -11,9 +11,11 @@ import {
   loadCSS,
   loadHeader,
   loadFooter,
+  toClassName,
+  getMetadata,
 } from './aem.js';
 
-/* Plugins */
+/* Plugin System */
 window.hlx.plugins.add('rum-conversion', {
   url: '/plugins/rum-conversion/src/index.js',
   load: 'lazy',
@@ -29,7 +31,8 @@ export function getSectionMetadata(element, name) {
   if (!section) {
     return undefined;
   }
-  return section.dataset[name];
+  const dataValue = section.dataset[name] || '';
+  return dataValue.toLowerCase();
 }
 
 /**
@@ -101,6 +104,7 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
+    await window.hlx.plugins.run('loadEager');
     decorateMain(main);
     document.body.classList.add('appear');
     await waitForLCP(LCP_BLOCKS);
@@ -152,6 +156,8 @@ async function loadLazy(doc) {
   loadFonts();
   addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
 
+  window.hlx.plugins.run('loadLazy', { toClassName, getMetadata });
+
   sampleRUM('lazy');
   sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
   sampleRUM.observe(main.querySelectorAll('picture > img'));
@@ -162,13 +168,19 @@ async function loadLazy(doc) {
  * without impacting the user experience.
  */
 function loadDelayed() {
-  // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
+  window.setTimeout(() => {
+    window.hlx.plugins.load('delayed');
+    window.hlx.plugins.run('loadDelayed');
+    // eslint-disable-next-line import/no-cycle
+    import('./delayed.js');
+  }, 3000);
   // load anything that can be postponed to the latest here
 }
 
 async function loadPage() {
+  await window.hlx.plugins.load('eager');
   await loadEager(document);
+  await window.hlx.plugins.load('lazy');
   await loadLazy(document);
   loadDelayed();
 }

@@ -21,7 +21,7 @@ async function handleSubmit(form) {
   });
   await resp.text();
   sampleRUM('form:submit');
-  const cevent = getSectionMetadata(form, 'trialSignup');
+  const cevent = getSectionMetadata(form, 'conversionName');
   if (cevent) {
     sampleRUM.convert(cevent);
   }
@@ -78,9 +78,9 @@ function createInput(field) {
   input.name = field.Field;
 
   const search = new URLSearchParams(window.location.search);
-  const searchValue = search.get(field.Field);
-  if (searchValue) {
-    input.value = searchValue;
+  const fieldValue = search.get(field.Field) || document[field.Field];
+  if (fieldValue) {
+    input.value = fieldValue;
   } else if (field.Value) {
     input.value = field.Value;
   }
