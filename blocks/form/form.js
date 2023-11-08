@@ -1,3 +1,5 @@
+import { sampleRUM } from '../../scripts/aem.js';
+
 function constructPayload(form) {
   return [...form.elements].reduce((payload, formElement) => {
     if (formElement.id) {
@@ -17,6 +19,7 @@ async function handleSubmit(form) {
     body: JSON.stringify({ data: payload }),
   });
   await resp.text();
+  sampleRUM('form:submit');
   return payload;
 }
 
