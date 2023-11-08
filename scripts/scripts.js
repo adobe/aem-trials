@@ -13,7 +13,24 @@ import {
   loadFooter,
 } from './aem.js';
 
+/* Plugins */
+window.hlx.plugins.add('rum-conversion', {
+  url: '/plugins/rum-conversion/src/index.js',
+  load: 'lazy',
+});
+
 const LCP_BLOCKS = []; // add your LCP blocks to the list
+
+/**
+ * Returns a metadata entry for the closest section
+ */
+export function getSectionMetadata(element, name) {
+  const section = element.classList.contains('section') ? element : element.closest('.section');
+  if (!section) {
+    return undefined;
+  }
+  return section.dataset[name];
+}
 
 /**
  * Builds hero block and prepends to main in a new section.

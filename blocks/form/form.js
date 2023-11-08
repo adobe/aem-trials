@@ -1,4 +1,5 @@
 import { sampleRUM } from '../../scripts/aem.js';
+import { getSectionMetadata } from '../../scripts/scripts.js';
 
 function constructPayload(form) {
   return [...form.elements].reduce((payload, formElement) => {
@@ -20,6 +21,10 @@ async function handleSubmit(form) {
   });
   await resp.text();
   sampleRUM('form:submit');
+  const cevent = getSectionMetadata(form, 'trialSignup');
+  if (cevent) {
+    sampleRUM.convert(cevent);
+  }
   return payload;
 }
 
