@@ -1,159 +1,75 @@
-import {
-  sampleRUM,
-  buildBlock,
-  decorateButtons,
-  decorateIcons,
-  decorateSections,
-  decorateBlocks,
-  decorateTemplateAndTheme,
-  waitForLCP,
-  loadBlocks,
-  loadCSS,
-  loadHeader,
-  loadFooter,
-} from './aem.js';
-
-const LCP_BLOCKS = []; // add your LCP blocks to the list
-
-/**
- * Builds hero block and prepends to main in a new section.
- * @param {Element} main The container element
+/*
+ * Copyright 2022 Adobe. All rights reserved.
+ * This file is licensed to you under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License. You may obtain a copy
+ * of the License at http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under
+ * the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+ * OF ANY KIND, either express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
  */
-function buildHeroBlock(main) {
-  const heroContent = main.querySelector('.hero-content');
-  const picture = main.querySelector('picture');
 
-  if (heroContent && picture // eslint-disable-next-line no-bitwise
-      && (heroContent.compareDocumentPosition(picture) & Node.DOCUMENT_POSITION_PRECEDING)) {
-    const section = document.createElement('div');
+import { setLibs } from './utils.js';
 
-    const { parentElement } = heroContent;
-    // Delete the parent element as it should now be empty
-    parentElement.remove();
+const LIBS = '/libs';
+const STYLES = ['/styles/styles.css'];
+const CONFIG = {
+  imsClientId: '',
+  locales: { '': { ietf: 'en-US', tk: 'hah7vzn.css' } },
+  geoRouting: 'off',
+  productionDomain: 'aem-trials.adobe.com',
+  prodDomains: ['aem-trials.adobe.com'],
+  useDotHtml: true,
+};
 
-    section.append(buildBlock('hero', { elems: [picture, heroContent] }));
-    main.prepend(section);
-  }
-}
+const eagerLoad = (img) => {
+  img?.setAttribute('loading', 'eager');
+  img?.setAttribute('fetchpriority', 'high');
+};
 
-/**
- * load fonts.css and set a session storage flag
- */
-async function loadFonts() {
-  await loadCSS(`${window.hlx.codeBasePath}/styles/fonts.css`);
-  try {
-    if (!window.location.hostname.includes('localhost')) sessionStorage.setItem('fonts-loaded', 'true');
-  } catch (e) {
-    // do nothing
-  }
-}
-
-/**
- * Builds all synthetic blocks in a container element.
- * @param {Element} main The container element
- */
-function buildAutoBlocks(main) {
-  try {
-    buildHeroBlock(main);
-  } catch (error) {
-    // eslint-disable-next-line no-console
-    console.error('Auto Blocking failed', error);
-  }
-}
-
-/**
- * Decorates the main element.
- * @param {Element} main The main element
- */
-// eslint-disable-next-line import/prefer-default-export
-export function decorateMain(main) {
-  // hopefully forward compatible button decoration
-  decorateButtons(main);
-  decorateIcons(main);
-  buildAutoBlocks(main);
-  decorateSections(main);
-  decorateBlocks(main);
-}
-
-/**
- * Loads everything needed to get to LCP.
- * @param {Element} doc The container element
- */
-async function loadEager(doc) {
-  document.documentElement.lang = 'en';
-  decorateTemplateAndTheme();
-  const main = doc.querySelector('main');
-  if (main) {
-    decorateMain(main);
-    document.body.classList.add('appear');
-    await waitForLCP(LCP_BLOCKS);
-  }
-
-  try {
-    /* if desktop (proxy for fast connection) or fonts already loaded, load fonts.css */
-    if (window.innerWidth >= 900 || sessionStorage.getItem('fonts-loaded')) {
-      loadFonts();
-    }
-  } catch (e) {
-    // do nothing
-  }
-}
-
-/**
- * Adds the favicon.
- * @param {string} href The favicon URL
- */
-export function addFavIcon(href) {
-  const link = document.createElement('link');
-  link.rel = 'icon';
-  link.type = 'image/svg+xml';
-  link.href = href;
-  const existingLink = document.querySelector('head link[rel="icon"]');
-  if (existingLink) {
-    existingLink.parentElement.replaceChild(link, existingLink);
+(async function loadLCPImage() {
+  const marquee = document.querySelector('.marquee');
+  if (marquee) {
+    marquee.querySelectorAll('img').forEach(eagerLoad);
   } else {
-    document.getElementsByTagName('head')[0].appendChild(link);
+    eagerLoad(document.querySelector('img'));
   }
-}
+}());
 
-/**
- * Loads everything that doesn't need to be delayed.
- * @param {Element} doc The container element
+/*
+ * ------------------------------------------------------------
+ * Edit below at your own risk
+ * ------------------------------------------------------------
  */
-async function loadLazy(doc) {
-  const main = doc.querySelector('main');
-  await loadBlocks(main);
 
-  const { hash } = window.location;
-  const element = hash ? doc.getElementById(hash.substring(1)) : false;
-  if (hash && element) element.scrollIntoView();
+const miloLibs = setLibs(LIBS);
 
-  loadHeader(doc.querySelector('header'));
-  loadFooter(doc.querySelector('footer'));
+(function loadStyles() {
+  const paths = [`${miloLibs}/styles/styles.css`];
+  if (STYLES) {
+    paths.push(...(Array.isArray(STYLES) ? STYLES : [STYLES]));
+  }
+  paths.forEach((path) => {
+    const link = document.createElement('link');
+    link.setAttribute('rel', 'stylesheet');
+    link.setAttribute('href', path);
+    document.head.appendChild(link);
+  });
+}());
 
-  loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
-  loadFonts();
-  addFavIcon(`${window.hlx.codeBasePath}/styles/favicon.svg`);
-
-  sampleRUM('lazy');
-  sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
-  sampleRUM.observe(main.querySelectorAll('picture > img'));
-}
-
-/**
- * Loads everything that happens a lot later,
- * without impacting the user experience.
- */
-function loadDelayed() {
-  // eslint-disable-next-line import/no-cycle
-  window.setTimeout(() => import('./delayed.js'), 3000);
-  // load anything that can be postponed to the latest here
-}
-
-async function loadPage() {
-  await loadEager(document);
-  await loadLazy(document);
-  loadDelayed();
-}
-
-loadPage();
+(async function loadPage() {
+  const { loadArea, loadLana, setConfig, createTag } = await import(`${miloLibs}/utils/utils.js`);
+  const metaCta = document.querySelector('meta[name="chat-cta"]');
+  if (metaCta && !document.querySelector('.chat-cta')) {
+    const isMetaCtaDisabled = metaCta?.content === 'off';
+    if (!isMetaCtaDisabled) {
+      const chatDiv = createTag('div', { class: 'chat-cta meta-cta', 'data-content': metaCta.content });
+      const lastSection = document.body.querySelector('main > div:last-of-type');
+      if (lastSection) lastSection.insertAdjacentElement('beforeend', chatDiv);
+    }
+  }
+  setConfig({ ...CONFIG, miloLibs });
+  loadLana({ clientId: 'bacom' });
+  await loadArea();
+}());

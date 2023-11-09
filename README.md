@@ -1,30 +1,48 @@
 # AEM Trials landing page
 
-Public home page for the AEM Trials program.
-
 ## Environments
+[Preview](https://main--aem-trials--adobe.hlx.page/) | [Live](https://aem-trials.adobe.com)
 
-- Preview: https://main--aem-trials--adobe.hlx.page/
-- Live: https://main--aem-trials--adobe.hlx.live/
+## Getting started
 
-## Installation
+### TL;DR
+1. Clone this repo to your computer.
+1. Install the [AEM CLI](https://github.com/adobe/helix-cli): `sudo npm install -g @adobe/aem-cli`
+1. In a terminal, run `aem up` this repo's folder.
+1. Start coding.
 
+## Tooling
+
+### NPM (Recommended)
+You will need to install npm packages (`npm install`) to:
+
+1. Lint
+2. Test
+
+## Testing
 ```sh
-npm i
+npm run test
 ```
+or:
+```sh
+npm run test:watch
+```
+This will give you several options to debug tests. Note: coverage may not be accurate.
 
 ## Linting
-
+To run the linter run:
 ```sh
 npm run lint
 ```
-
-## Local development
-
-1. Install the [Helix CLI](https://github.com/adobe/helix-cli): `npm install -g @adobe/helix-cli`
-1. Start Franklin Proxy: `hlx up` (opens your browser at `http://localhost:3000`)
-1. Open this directory in your favorite IDE and start coding :)
-
-## Content
-
-- https://adobe.sharepoint.com/:f:/r/sites/HelixProjects/Shared%20Documents/sites/aem-trials?csf=1&web=1&e=4fDLZU
+To lint just js or css files, run
+```sh
+npm run lint:css
+```
+or:
+```sh
+npm run lint:js
+```
+If you need to lint just one file, you can run:
+```sh
+npx eslint file1.js
+```
