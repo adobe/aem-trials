@@ -1,4 +1,6 @@
 {
+  "project": "AEM Trials",
+  "host": "aem-trials.adobe.com",
   "plugins": [
     {
       "id": "library",
