@@ -1,5 +1,7 @@
 # AEM Trials landing page
 
+A landing page for AEM trial signups based on [milo](https://github.com/adobecom/milo).
+
 ## Environments
 [Preview](https://main--aem-trials--adobe.hlx.page/) | [Live](https://aem-trials.adobe.com)
 
