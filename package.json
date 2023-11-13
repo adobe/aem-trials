@@ -1,8 +1,8 @@
 {
-  "name": "@adobe/helix-project-boilerplate",
+  "name": "@adobecom/aem-trials",
   "private": true,
   "version": "1.0.0",
-  "description": "Starter project for Adobe Helix",
+  "description": "AEM trials landing page",
   "scripts": {
     "lint:js": "eslint .",
     "lint:css": "stylelint blocks/**/*.css styles/*.css",
@@ -15,21 +15,28 @@
   "author": "Adobe",
   "license": "Apache License 2.0",
   "bugs": {
-    "url": "https://github.com/adobe/helix-project-boilerplate/issues"
+    "url": "https://github.com/adobe/aem-trials/issues"
   },
-  "homepage": "https://github.com/adobe/helix-project-boilerplate#readme",
+  "homepage": "https://github.com/adobe/aem-trials#readme",
   "devDependencies": {
-    "@babel/core": "7.21.0",
-    "@babel/eslint-parser": "7.19.1",
-    "chai": "4.3.7",
-    "eslint": "8.35.0",
-    "eslint-config-airbnb-base": "15.0.0",
-    "eslint-plugin-import": "2.27.5",
+    "@babel/core": "7.17.7",
+    "@babel/eslint-parser": "7.17.0",
     "@esm-bundle/chai": "4.3.4-fix.0",
-    "@web/test-runner": "0.15.1",
-    "@web/test-runner-commands": "0.6.5",
-    "sinon": "15.0.1",
-    "stylelint": "15.2.0",
-    "stylelint-config-standard": "30.0.1"
+    "@web/dev-server-import-maps": "^0.0.6",
+    "@web/test-runner": "0.13.27",
+    "@web/test-runner-commands": "0.6.1",
+    "chai": "4.3.6",
+    "eslint": "8.11.0",
+    "eslint-config-airbnb-base": "15.0.0",
+    "eslint-nibble": "^8.1.0",
+    "eslint-plugin-chai-friendly": "^0.7.2",
+    "eslint-plugin-compat": "^4.0.2",
+    "eslint-plugin-ecmalist": "^1.0.8",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "sinon": "13.0.1",
+    "stylelint": "14.6.0",
+    "stylelint-config-prettier": "9.0.3",
+    "stylelint-config-standard": "25.0.0"
   }
 }

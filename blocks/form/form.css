@@ -1,7 +1,7 @@
 main .form {
   /* Scope variables to form */
-  --form-input-border-color: #C1C1C3;
-  --form-input-border-highlight-color: #E34850;
+  --form-input-border-color: #c1c1c3;
+  --form-input-border-highlight-color: #e34850;
 
   padding-top: 34px;
   min-height: 218px;
@@ -18,8 +18,8 @@ main .form h3 {
 
 main .form p,
 main .form form {
-  font-size: var(--heading-font-size-l);
-  line-height: var(--heading-line-height-l);
+  font-size: var(--type-heading-l-size);
+  line-height: var(--type-heading-l-lh);
   margin-top: unset;
 }
 
@@ -33,11 +33,11 @@ main .form input {
 }
 
 main .form .field-wrapper p {
-  font-size: var(--text-font-size-xs);
+  font-size: var(--type-body-xs-size);
   margin: 0;
 }
 
-main .form .form-submit-wrapper  {
+main .form .form-submit-wrapper {
   width: 50%;
   text-align: end;
   margin-top: var(--spacing-m);
@@ -86,7 +86,7 @@ main .form.submitted form {
     width: 85%;
   }
 
-  main .form .form-submit-wrapper  {
+  main .form .form-submit-wrapper {
     width: 85%;
   }
 }
