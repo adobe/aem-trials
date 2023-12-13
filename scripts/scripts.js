@@ -18,8 +18,8 @@ const CONFIG = {
   imsClientId: '',
   locales: { '': { ietf: 'en-US', tk: 'hah7vzn.css' } },
   geoRouting: 'off',
-  productionDomain: 'aem-trials.adobe.com',
-  prodDomains: ['aem-trials.adobe.com'],
+  productionDomain: 'aem-trial.adobe.com',
+  prodDomains: ['aem-trial.adobe.com'],
   useDotHtml: true,
 };
 
@@ -58,7 +58,6 @@ const miloLibs = setLibs(LIBS);
 
 (async function loadPage() {
   const { loadArea, setConfig } = await import(`${miloLibs}/utils/utils.js`);
-  const config = setConfig({ ...CONFIG, miloLibs });
-  console.log(config);
+  setConfig({ ...CONFIG, miloLibs });
   await loadArea();
 }());
