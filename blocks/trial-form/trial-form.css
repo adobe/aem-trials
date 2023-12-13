@@ -67,8 +67,8 @@ main .form .highlight {
 }
 
 main .dark .form h3,
-main .dark .form-text-field-wrapper p,
-main .dark .form-submit-message {
+main .dark .form .form-text-field-wrapper p,
+main .dark .form .form-submit-message {
   color: var(--color-white);
 }
 

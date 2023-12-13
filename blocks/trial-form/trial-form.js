@@ -115,11 +115,12 @@ async function createForm(formURL) {
   return form;
 }
 
-const init = async (el) => {
-  const anchor = el.querySelector('p > a[href$=".json"]');
+const decorate = async (block) => {
+  block.classList.add('form');
+  const anchor = block.querySelector('p > a[href$=".json"]');
   if (anchor) {
     anchor.parentElement.replaceWith(await createForm(anchor.href));
   }
 };
 
-export default init;
+export default decorate;

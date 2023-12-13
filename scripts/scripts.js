@@ -18,8 +18,8 @@ const CONFIG = {
   imsClientId: '',
   locales: { '': { ietf: 'en-US', tk: 'hah7vzn.css' } },
   geoRouting: 'off',
-  productionDomain: 'aem-trials.adobe.com',
-  prodDomains: ['aem-trials.adobe.com'],
+  productionDomain: 'aem-trial.adobe.com',
+  prodDomains: ['aem-trial.adobe.com'],
   useDotHtml: true,
 };
 
