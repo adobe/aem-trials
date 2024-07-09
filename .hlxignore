@@ -3,3 +3,5 @@
 LICENSE
 test/*
 !tools/sidekick/config.json
+package.json
+package-lock.json
